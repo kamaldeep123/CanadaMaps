@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canada Map</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        #map {
+            height: 90vh; /* Fill most of the screen height */
+            width: 100%;
+        }
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #f1f1f1;
+        }
+    </style>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Canada Map (OpenStreetMap)</h1>
+    </header>
+    <div id="map"></div>
+    <footer>
+        <p>© 2025 Canada Map Viewer</p>
+    </footer>
+    <script>
+        // Initialize the map
+        const map = L.map('map').setView([56.1304, -106.3468], 4); // Coordinates for Canada
+
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        // Add a marker at the center of Canada
+        const marker = L.marker([56.1304, -106.3468]).addTo(map);
+        marker.bindPopup("<b>Canada</b><br>Welcome to the center of Canada!").openPopup();
+    </script>
+</body>
+</html>
